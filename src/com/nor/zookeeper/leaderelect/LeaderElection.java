@@ -31,7 +31,7 @@ public class LeaderElection {
 			            following();
 			        }
 				}});
-			zk.create(root, new byte[0], Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+			zk.create(root, new byte[0], Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (KeeperException e) {
