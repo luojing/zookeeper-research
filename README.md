@@ -1,5 +1,8 @@
 zookeeper-research
 ==================
+ZooKeeper Recipes and Solutions
+
+http://zookeeper.apache.org/doc/trunk/recipes.html
 
 ### Deploy fake zookeeper cluster
 1. Download zookeeper, http://www.apache.org/dyn/closer.cgi/zookeeper/
