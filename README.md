@@ -4,11 +4,11 @@ zookeeper-research
 ### Deploy fake zookeeper cluster
 1. Download zookeeper, http://www.apache.org/dyn/closer.cgi/zookeeper/
 2. make 3 copies
-..* tar zxvf zookeeper-3.4.5.tar.gz
-..* cp -r zookeeper-3.4.5 /opt/zookeeper2181/
-..* cp -r zookeeper-3.4.5 /opt/zookeeper2182/
-..* cp -r zookeeper-3.4.5 /opt/zookeeper2183/
-3. configuration
+  - tar zxvf zookeeper-3.4.5.tar.gz
+  - cp -r zookeeper-3.4.5 /opt/zookeeper2181/
+  - cp -r zookeeper-3.4.5 /opt/zookeeper2182/
+  - cp -r zookeeper-3.4.5 /opt/zookeeper2183/
+3. Configuration
 
 cat zookeeper2181/conf/zoo.cfg
 ```
@@ -71,3 +71,5 @@ cd /opt/zookeeper2182/
 cd /opt/zookeeper2183/
 ./bin/zkServer.sh stop
 ```
+
+4. ./run.sh will start the cluster.
