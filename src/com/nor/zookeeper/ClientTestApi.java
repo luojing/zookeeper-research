@@ -1,9 +1,10 @@
 package com.nor.zookeeper;
 import java.io.IOException;
 import java.util.List;
-import java.util.concurrent.CountDownLatch;
 
+import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.KeeperException;
+import org.apache.zookeeper.ZooDefs.Ids;
 import org.apache.zookeeper.ZooKeeper;
 import org.apache.zookeeper.ZooKeeper.States;
 import org.apache.zookeeper.data.ACL;
@@ -18,7 +19,6 @@ public class ClientTestApi {
 			ZooKeeper zk = new ZooKeeper("109.105.2.162:2181,109.105.2.162:2182,109.105.2.162:2183", 10000, wc);
 			String path = "/testRootPath1";
 			
-			/*
 			System.out.println("1. 创建一个目录节点");
 			zk.create(path, "testRootData".getBytes(), Ids.OPEN_ACL_UNSAFE,
 					CreateMode.PERSISTENT);
@@ -31,9 +31,17 @@ public class ClientTestApi {
 			zk.create(path + "/testChildPathTwo",
 					"testChildDataTwo".getBytes(), Ids.OPEN_ACL_UNSAFE,
 					CreateMode.PERSISTENT);
-			*/
+
+			Stat s = new Stat();
+			System.out.println("1. /testRootPath1 getData: "+new String(zk.getData(path, true, s)));
+			System.out.println("1. version: "+s.getVersion());
+			zk.setData(path, "hello world".getBytes(), s.getVersion());
+			System.out.println("1. /testRootPath1 getData: "+new String(zk.getData(path, true, s)));
+			System.out.println("1. version: "+s.getVersion());
+			zk.setData(path, "hello world, China".getBytes(), s.getVersion());
+			System.out.println("1. /testRootPath1 getData: "+new String(zk.getData(path, true, s)));
+			System.out.println("1. version: "+s.getVersion());
 			
-			System.out.println("1. /testRootPath1 getData: "+new String(zk.getData(path, true, null)));
 			System.out.println("2. /testRootPath1/testChildPathOne getData: "+new String(zk.getData(path+"/testChildPathOne", true, null)));
 			
 			System.out.println("3. 取出子目录节点列表");
